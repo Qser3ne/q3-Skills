@@ -1,5 +1,5 @@
 interface:
-  display_name: "Document Review"
+  display_name: "docs-review"
   short_description: "检查文档中的冲突、重复与结构问题，并给出优化方案"
   default_prompt: "Use $docs-review to inspect this Markdown or plain-text document for conflicting descriptions, repeated content, sectioning problems, and full-structure improvements. Report the issues first, and rewrite only if I explicitly ask."
 

@@ -3,13 +3,17 @@ name: assist-softwareInstaller
 description: 软件安装与部署。当用户显式调用 `$assist-softwareInstaller` 安装、部署或设置工具和应用时使用。输入通常包括软件名、仓库或安装目标；输出包括可运行安装结果。不用于用法咨询或已安装应用排错。
 ---
 
-# Software Installer
+# assist-softwareInstaller
+
+## 用途
 
 Install software with a fixed decision order and predictable filesystem layout.
 
+## 何时使用
+
 Use this skill only when the user explicitly invokes `$assist-softwareInstaller` and the intent is to install, deploy, or set up software. Do not use it for requests that only ask for usage help, documentation summaries, feature comparisons, troubleshooting after an existing install, or general brainstorming.
 
-## Trigger Rules
+### Trigger Rules
 
 Trigger this skill only when the user explicitly invokes `$assist-softwareInstaller` for actions such as:
 
@@ -26,7 +30,25 @@ Do not trigger this skill when the user only wants:
 - architecture discussion
 - debugging of an already installed app unless the request clearly becomes a reinstall or fresh setup task
 
-## Classification And Install Root
+## 输入
+
+- 软件名、GitHub 仓库、发行包来源或安装目标。
+- 安装分类所需信息：CTF/安全工具或普通应用。
+- 持久安装目录环境变量：`SKILL-ASSIST-SOFTWAREINSTALLER-CTF-TOOLS-ROOT` 或 `SKILL-ASSIST-SOFTWAREINSTALLER-GENERAL-APPS-ROOT`。
+- 需要 sudo 时的可选环境变量：`SKILL-ASSIST-SOFTWAREINSTALLER-SUDO-PASSWORD`。
+
+## 输出
+
+- chosen install method: `apt`, `release package`, `docker`, or `source checkout`
+- final install directory, if local files were created
+- launcher path and `~/.local/bin` command, if created
+- generated CLI usage Markdown path, if created
+- whether privileged steps succeeded automatically
+- any remaining manual commands required from the user
+
+## 执行流程
+
+### Classification And Install Root
 
 Normalize the software name into a filesystem-safe command name using lowercase letters, digits, hyphens, and underscores as needed.
 
@@ -51,7 +73,7 @@ general_apps_root="$(printenv 'SKILL-ASSIST-SOFTWAREINSTALLER-GENERAL-APPS-ROOT'
 
 If the required install-root variable is unset, ask the user for the install root or require the environment variable before creating persistent files. Do not guess a user-specific home path. Before using the selected install root, ensure the root directory exists; create it only if it is missing.
 
-## Decision Order
+### Decision Order
 
 Always use this order. Do not skip earlier steps unless they are clearly not applicable.
 
@@ -60,10 +82,10 @@ Always use this order. Do not skip earlier steps unless they are clearly not app
 3. Choose exactly one install mode:
    - `apt`
    - release package download
-   - Docker deployment
-   - direct source checkout
+    - Docker deployment
+    - direct source checkout
 
-## Apt-First Policy
+### Apt-First Policy
 
 Prefer `apt` when all of these are true:
 
@@ -79,7 +101,7 @@ If `apt` is chosen:
 - report the package name used
 - report any manual privileged command still required if automatic elevation fails
 
-## GitHub Evaluation Policy
+### GitHub Evaluation Policy
 
 When `apt` is unavailable or unsuitable and the request targets a GitHub project, inspect the repo documentation before choosing a method.
 
@@ -91,7 +113,7 @@ Choose the install mode with these fixed rules:
 
 Do not choose multiple primary install modes in one pass. Pick the best documented path and execute that path cleanly.
 
-## Direct Source Checkout Rules
+### Direct Source Checkout Rules
 
 For direct source installs, clone or fetch into the chosen install root and keep the project self-contained there.
 
@@ -114,7 +136,7 @@ Then expose a globally usable command:
 - create `~/.local/bin/<software-name>` as a symlink to the launcher script
 - prefer `~/.local/bin` over `/usr/local/bin`
 
-## Docker Deployment Rules
+### Docker Deployment Rules
 
 Choose Docker only when the project documentation clearly treats Docker or Compose as the normal deployment path.
 
@@ -125,7 +147,7 @@ If Docker is chosen:
 - report the exact container start command or compose command
 - do not also create a source-install launcher unless the project explicitly requires one
 
-## Privilege Handling
+### Privilege Handling
 
 If a step requires elevated privileges:
 
@@ -152,7 +174,7 @@ printf '%s\n' "$sudo_password" | sudo -S <command>
 
 If the variable is unset or sudo fails, do not retry with a guessed password. Stop that privileged path and return exact manual commands for the user to run.
 
-## Post-Install CLI Notes
+### Post-Install CLI Notes
 
 After the installation completes, check whether the software can be driven from the command line.
 
@@ -172,7 +194,9 @@ Write the document in Chinese and keep examples minimal but useful. Prefer the g
 
 Do not create this Markdown file when the installed software is not meaningfully CLI-driven.
 
-## Output Contract
+## 约束规则
+
+### Output Contract
 
 Every install run must end by clearly reporting:
 
@@ -189,8 +213,35 @@ When a method is rejected during evaluation, keep the explanation short and conc
 - `README recommends Docker as primary deployment path`
 - `release binary available, source install not preferred`
 
-## Guardrails
+### Guardrails
 
 - v1 scope is limited to `apt` and GitHub-driven install flows.
 - Do not invent unsupported package-manager paths unless the repository documentation makes them part of the selected install flow.
 - Do not use this skill implicitly. The user must explicitly invoke `$assist-softwareInstaller`.
+
+## 边界情况
+
+- If classification is unclear, default to `general-app`.
+- If the required install-root variable is unset, ask the user for the install root or require the environment variable before creating persistent files.
+- If elevation is blocked or fails, stop that privileged path and return exact manual commands for the user to run.
+- Do not create CLI usage Markdown when the installed software is not meaningfully CLI-driven.
+
+## 示例
+
+User:
+
+```text
+$assist-softwareInstaller install owner/project from GitHub
+```
+
+Assistant:
+
+```text
+Classify the target, check apt first, inspect GitHub README if needed, choose one install mode, install, then report method, paths, launcher, docs, privilege result, and manual follow-up commands.
+```
+
+## 不适用场景
+
+- 用户没有显式调用 `$assist-softwareInstaller`。
+- 用户只要求用法示例、README 摘要、软件推荐、架构讨论或已安装应用排错。
+- 请求不涉及安装、部署或设置软件。

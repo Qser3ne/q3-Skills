@@ -1,5 +1,5 @@
 interface:
-  display_name: "CTF Summary"
+  display_name: "ctf-summary"
   short_description: "从 CTF WP 提炼知识点 Markdown 文档"
   default_prompt: "使用 $ctf-summary 基于当前 CTF WP 提炼可复用知识点，并按知识点概述、来源场景、适用场景、最小复现场景、利用步骤、完整 POC、复现结果、利用边界与注意点输出中文 Markdown。"
 

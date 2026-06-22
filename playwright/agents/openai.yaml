@@ -1,5 +1,5 @@
 interface:
-  display_name: "Playwright CLI Skill"
+  display_name: "playwright"
   short_description: "Automate real browsers from the terminal"
   icon_small: "./assets/playwright-small.svg"
   icon_large: "./assets/playwright.png"

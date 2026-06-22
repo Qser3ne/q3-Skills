@@ -1,5 +1,5 @@
 interface:
-  display_name: "CTF Tree Binary"
+  display_name: "ctf-tree-binary"
   short_description: "用中文维护可续接的 CTF Pwn/Reverse 任务-结论验证链与附录"
   default_prompt: "在解决这道 CTF Pwn 或 Reverse challenge 时使用 $ctf-tree-binary；每次实验或观察后先更新 worklog，再继续下一步。"
 policy:

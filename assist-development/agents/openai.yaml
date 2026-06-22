@@ -1,5 +1,5 @@
 interface:
-  display_name: "Assist Development"
+  display_name: "assist-development"
   short_description: "开发中维护项目文档与 Git 提交"
   default_prompt: "Use $assist-development to maintain project documentation, initialize or connect Git repositories, and commit local changes during development."
 

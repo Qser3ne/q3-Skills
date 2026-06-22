@@ -1,4 +1,4 @@
 interface:
-  display_name: "NoPUA"
+  display_name: "nopua"
   short_description: "在工作卡住时恢复节奏和推进力"
   default_prompt: "Use $nopua to recover momentum when the work is stuck, looping, or drifting into passive behavior."

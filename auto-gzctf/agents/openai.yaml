@@ -1,8 +1,7 @@
 interface:
-  display_name: "GZCTF Target Ops"
+  display_name: "auto-gzctf"
   short_description: "操作 GZCTF/HackHub 平台：列题、开关实例、加密提交 flag。"
   default_prompt: "使用 $auto-gzctf 处理 GZCTF/HackHub 平台动作，优先调用脚本完成列题、查看详情、开启/延长/关闭实例，以及按 apiPublicKey 加密提交 flag。"
 
 policy:
   allow_implicit_invocation: false
-

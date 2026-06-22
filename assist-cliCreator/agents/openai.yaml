@@ -1,4 +1,4 @@
 interface:
-  display_name: "CLI Creator"
+  display_name: "assist-cliCreator"
   short_description: "Build CLIs for Codex"
   default_prompt: "Use $assist-cliCreator to create a composable CLI from this source material, install it on PATH, test it from outside the source folder, and create a companion skill that teaches Codex when to use it."

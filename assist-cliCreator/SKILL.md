@@ -3,13 +3,38 @@ name: assist-cliCreator
 description: 可复用 CLI 构建。当用户要从 API 文档、OpenAPI、curl、SDK、网页或脚本创建命令行工具时使用。输入通常包括来源材料和目标命令；输出包括可安装 CLI、稳定 JSON 接口和 companion skill。不用于一次性脚本。
 ---
 
-# CLI Creator
+# assist-cliCreator
+
+## 用途
 
 Create a real CLI that future Codex threads can run by command name from any working directory.
 
 This skill is for durable tools, not one-off scripts. If a short script in the current repo solves the task, write the script there instead.
 
-## Start
+## 何时使用
+
+- 用户要从 API docs、OpenAPI JSON、SDK docs、curl examples、browser app、existing internal script、article 或 working shell history 创建可复用 CLI。
+- 目标 CLI 需要能从任意工作目录运行。
+- 目标 CLI 需要暴露稳定 read/write commands、稳定 JSON、auth/config 和 companion skill。
+
+## 输入
+
+- Source: API docs, OpenAPI JSON, SDK docs, curl examples, browser app, existing internal script, article, or working shell history.
+- Jobs: literal reads/writes such as `list drafts`, `download failed job logs`, `search messages`, `upload media`, `read queue schedule`.
+- Install name: a short binary name such as `ci-logs`, `slack-cli`, `sentry-cli`, or `buildkite-logs`.
+- Auth/config requirements, endpoint notes, fixtures, media/artifact flows, or dangerous write actions.
+
+## 输出
+
+- 可安装并可从任意 repo 调用的 CLI。
+- `doctor`、discovery、resolve、read、write、raw escape hatch 等命令表面。
+- Stable machine-readable JSON output and documented JSON policy.
+- PATH install step、README 或等价说明、smoke test 结果。
+- Companion skill that teaches future Codex threads when and how to use the CLI.
+
+## 执行流程
+
+### Start
 
 Name the target tool, its source, and the first real jobs it should do:
 
@@ -27,7 +52,7 @@ command -v <tool-name> || true
 
 If it exists, choose a clearer install name or ask the user.
 
-## Choose the Runtime
+### Choose the Runtime
 
 Before choosing, inspect the user's machine and source material:
 
@@ -45,7 +70,7 @@ Do not pick a language that adds setup friction unless it materially improves th
 
 State the choice in one sentence before scaffolding, including the reason and the installed toolchain you found.
 
-## Command Contract
+### Command Contract
 
 Sketch the command surface in chat before coding. Include the binary name, discovery commands, resolve or ID-lookup commands, read commands, write commands, raw escape hatch, auth/config choice, and PATH/install command.
 
@@ -67,7 +92,7 @@ Do not expose only a generic `request` command. Give Codex high-level verbs for 
 
 Document the JSON policy in the CLI README or equivalent: API pass-through versus CLI envelope, success shape, error shape, and one example for each command family. Under `--json`, errors must be machine-readable and must not contain credentials.
 
-## Auth and Config
+### Auth and Config
 
 Support the boring paths first, in this precedence order:
 
@@ -83,7 +108,7 @@ For internal web apps sourced from DevTools curls, create sanitized endpoint not
 
 Use screenshots to infer workflow, UI vocabulary, fields, and confirmation points. Do not treat screenshots as API evidence unless they are paired with a network request, export, docs page, or fixture.
 
-## Build Workflow
+### Build Workflow
 
 1. Read the source just enough to inventory resources, auth, pagination, IDs, media/file flows, rate limits, and dangerous write actions. If the docs expose OpenAPI, download or inspect it before naming commands.
 2. Sketch the command list in chat. Keep names short and shell-friendly.
@@ -105,7 +130,9 @@ For fixture-backed prototypes, keep fixtures in a predictable project path and m
 
 For log-oriented CLIs, keep deterministic snippet extraction separate from model interpretation. Prefer a command that emits filenames, line numbers or byte ranges, matched rules, and short excerpts.
 
-## Rust Defaults
+## 约束规则
+
+### Rust Defaults
 
 When building in Rust, use established crates instead of custom parsers:
 
@@ -117,7 +144,7 @@ When building in Rust, use established crates instead of custom parsers:
 
 Add a `Makefile` target such as `make install-local` that builds release and installs the binary into `~/.local/bin`.
 
-## TypeScript/Node Defaults
+### TypeScript/Node Defaults
 
 When building in TypeScript/Node, keep the CLI installable as a normal command:
 
@@ -129,7 +156,7 @@ When building in TypeScript/Node, keep the CLI installable as a normal command:
 
 Add an install path such as `pnpm install`, `pnpm build`, and `pnpm link --global`, or a `Makefile` target that installs a small wrapper into `~/.local/bin`.
 
-## Python Defaults
+### Python Defaults
 
 When building in Python, prefer boring standard-library pieces unless the workflow needs more:
 
@@ -141,7 +168,7 @@ When building in Python, prefer boring standard-library pieces unless the workfl
 
 Add a `Makefile` target such as `make install-local` that installs the command on PATH and document whether it depends on `uv`, a virtualenv, or only system Python.
 
-## Companion Skill
+### Companion Skill
 
 After the CLI works, create or update a small skill for it. Use `$skill-creator` when it is available. Use `$CODEX_HOME/skills/<tool-name>/SKILL.md` for a personal companion skill unless the user names a repo-local `.codex/skills/...` path or another skill repo.
 
@@ -158,3 +185,31 @@ Write the companion skill in the order a future Codex thread should use the CLI,
 - Three copy-pasteable command examples.
 
 Keep API reference details in the CLI docs or a skill reference file. Keep the skill focused on ordering, safety, and examples future Codex threads should actually run.
+
+## 边界情况
+
+- If a short script in the current repo solves the task, write the script there instead.
+- If the proposed command already exists, choose a clearer install name or ask the user.
+- If a live write is needed for confidence, ask first and make it reversible or draft-only.
+- For raw escape hatches, support read-only calls first and do not run raw non-GET/HEAD requests unless the user asked for that specific write.
+- For fixture-backed prototypes, smoke-test from `/tmp` to catch binaries that only work inside the source folder.
+
+## 示例
+
+User:
+
+```text
+Use $assist-cliCreator to create a CLI from these OpenAPI docs.
+```
+
+Assistant:
+
+```text
+Inventory resources and auth, sketch command surface, scaffold CLI, implement doctor/read/write/raw commands, install on PATH, smoke-test from outside the source folder, then create a companion skill.
+```
+
+## 不适用场景
+
+- 不用于一次性脚本或只在当前 repo 内运行的短脚本。
+- 不用于只需要解释 API 文档而不需要创建可安装 CLI 的任务。
+- 不用于没有重复 jobs、auth/config 或稳定 JSON 需求的临时自动化。

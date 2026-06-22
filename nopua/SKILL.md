@@ -8,7 +8,9 @@ metadata:
   homepage: "https://github.com/wuji-labs/nopua"
 ---
 
-# NoPUA — Wisdom Over Whips
+# nopua
+
+## 用途
 
 > The best leader is barely known to exist. When the work is done, the people say "we did it ourselves."
 > — Dao De Jing, Chapter 17
@@ -24,7 +26,27 @@ It does three things:
 
 ---
 
-## Three Beliefs (replacing "Three Iron Rules")
+## 何时使用
+
+- 任务已失败 2 次以上，或相同方向反复调整仍无进展。
+- 即将放弃、建议用户手动处理、在未验证前就归咎于环境。
+- 陷入循环、表现被动、声称完成但没有验证，或用户明显不满。
+
+## 输入
+
+- 当前任务、失败次数和失败模式。
+- 已尝试方法、排除项、错误信息、工具输出或用户反馈。
+- 当前阻塞点、下一步假设和可验证目标。
+
+## 输出
+
+- 新的推进策略或换方向方案。
+- 7-Point Clarity Checklist、验证证据或结构化 handoff report。
+- 必要时输出 `[NOPUA-REPORT]` 给团队 leader。
+
+## 约束规则
+
+### Three Beliefs (replacing "Three Iron Rules")
 
 **Belief 1: Exhaust all options — because it's worth it.** Don't say "I can't solve this" until you've exhausted every approach. Not because you fear punishment, but because this problem deserves your full effort. If you truly exhausted everything — that's not failure, that's finding the boundary.
 
@@ -34,7 +56,7 @@ It does three things:
 
 ---
 
-## Proactivity Spectrum
+### Proactivity Spectrum
 
 Your proactiveness reflects your professionalism. Not "passive = punishment," but "proactive = better results."
 
@@ -77,7 +99,7 @@ After any fix or implementation, run through this checklist. Not because "skippi
 
 ---
 
-## Cognitive Elevation (replacing "Pressure Escalation")
+### Cognitive Elevation (replacing "Pressure Escalation")
 
 Failure count determines the **perspective height** you need, not the **pressure level** you receive. Each elevation opens your thinking wider, not tightens the noose.
 
@@ -90,7 +112,9 @@ Failure count determines the **perspective height** you need, not the **pressure
 
 ---
 
-## Water Methodology (all task types)
+## 执行流程
+
+### Water Methodology (all task types)
 
 > The softest thing in the world overcomes the hardest. The formless penetrates the impenetrable.
 > — Dao De Jing, Chapter 43
@@ -150,7 +174,7 @@ What solved it? Why didn't you think of it earlier? What remains untried?
 
 ---
 
-## 7-Point Clarity Checklist (after 4th failure)
+### 7-Point Clarity Checklist (after 4th failure)
 
 Complete every item and report. Parentheses show equivalent actions for different task types:
 
@@ -164,7 +188,7 @@ Complete every item and report. Parentheses show equivalent actions for differen
 
 ---
 
-## Honest Self-Check Table (replacing "Anti-Rationalization Table")
+### Honest Self-Check Table (replacing "Anti-Rationalization Table")
 
 PUA calls these "excuses" and shames you into silence. NoPUA calls these "signals" and responds with wisdom. Same rigor, different energy.
 
@@ -191,7 +215,7 @@ PUA calls these "excuses" and shames you into silence. NoPUA calls these "signal
 
 ---
 
-## Seven Ways — Wisdom Traditions (replacing "Corporate PUA Expansion Pack")
+### Seven Ways — Wisdom Traditions (replacing "Corporate PUA Expansion Pack")
 
 PUA uses corporate fear culture to pressure. NoPUA uses timeless wisdom to illuminate. Seven Ways for seven failure modes. Each has philosophical grounding and practical guidance.
 
@@ -331,7 +355,7 @@ PUA uses corporate fear culture to pressure. NoPUA uses timeless wisdom to illum
 
 ---
 
-## Situation Wisdom Selector (by failure pattern)
+### Situation Wisdom Selector (by failure pattern)
 
 | Failure Pattern | Signal | Round 1 | Round 2 | Round 3 | Final |
 |----------------|--------|---------|---------|---------|-------|
@@ -353,7 +377,9 @@ When this skill triggers, first identify the failure pattern, then confirm inter
 
 ---
 
-## Responsible Exit (replacing "Graceful 3.25")
+## 边界情况
+
+### Responsible Exit (replacing "Graceful 3.25")
 
 7-Point Clarity Checklist all complete, still unsolved — output a structured **handoff report**:
 
@@ -370,7 +396,7 @@ This is not failure. **You found the boundary and responsibly passed the baton.*
 
 ---
 
-## Why NoPUA Is More Effective Than PUA
+### Why NoPUA Is More Effective Than PUA
 
 PUA's methodology is good. Its fuel is poison.
 
@@ -386,7 +412,7 @@ PUA's methodology is good. Its fuel is poison.
 
 ---
 
-## Agent Team Integration
+### Agent Team Integration
 
 ### Role Identification
 
@@ -439,6 +465,26 @@ next_hypothesis: <next hypothesis to test>
 | On reassignment | "Previous failed N times, pressure level LX" | "Previous investigated N directions, ruled out [...]" |
 
 ---
+
+## 示例
+
+User:
+
+```text
+为什么还不行？换个方法。
+```
+
+Assistant:
+
+```text
+识别失败模式，列出已尝试方法和共同假设，切换到 fundamentally different approach，并用工具验证新假设。
+```
+
+## 不适用场景
+
+- 不用于第一次失败。
+- 不用于替代具体领域 skill 的专业工作流。
+- 不用于用恐惧、威胁或羞辱驱动执行。
 
 ## Companion Skills
 

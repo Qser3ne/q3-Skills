@@ -1,5 +1,5 @@
 interface:
-  display_name: "OpenAI Docs"
+  display_name: "docs-openai"
   short_description: "Reference docs, choose models, and migrate OpenAI API integrations"
   icon_small: "./assets/openai-small.svg"
   icon_large: "./assets/openai.png"
