@@ -1,0 +1,7 @@
+interface:
+  display_name: "Skill Creator Auxiliary"
+  short_description: "补强 skill 的创建与更新流程"
+  default_prompt: "Use $assist-skillCreator to create or update a skill under the directory from SKILL-ASSIST-SKILLCREATOR-DEFAULT-SKILLS-DIR, ask for trigger mode, generate minimal agents metadata, and write skill creation plans in Chinese by default. If the environment variable is unset, ask for the target directory first."
+
+policy:
+  allow_implicit_invocation: true

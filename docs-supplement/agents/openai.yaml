@@ -1,0 +1,7 @@
+interface:
+  display_name: "Document Supplement"
+  short_description: "重写式整合文档补充内容"
+  default_prompt: "Use $docs-supplement to revise this document by integrating new content into the existing structure."
+
+policy:
+  allow_implicit_invocation: false

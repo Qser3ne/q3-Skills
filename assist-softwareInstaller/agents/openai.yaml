@@ -1,0 +1,7 @@
+interface:
+  display_name: "Software Installer"
+  short_description: "以 apt 优先的 GitHub 安装与部署指导"
+  default_prompt: "Use $assist-softwareInstaller to install or deploy software with an apt-first workflow and GitHub README-based install selection."
+
+policy:
+  allow_implicit_invocation: false

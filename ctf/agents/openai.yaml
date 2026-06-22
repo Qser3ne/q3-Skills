@@ -1,0 +1,7 @@
+interface:
+  display_name: "CTF"
+  short_description: "处理 Web / Misc CTF 题目，支持隐式触发"
+  default_prompt: "使用 $ctf 处理正在实战解题的 Web 或 Misc CTF 挑战，可在未显式调用时隐式触发。"
+
+policy:
+  allow_implicit_invocation: true

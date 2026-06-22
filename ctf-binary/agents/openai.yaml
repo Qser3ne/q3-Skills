@@ -1,0 +1,7 @@
+interface:
+  display_name: "CTF Binary"
+  short_description: "处理 Pwn / Reverse CTF 题目，支持隐式触发"
+  default_prompt: "使用 $ctf-binary 处理正在实战解题的 Pwn 或 Reverse CTF 挑战，可在未显式调用时隐式触发。"
+
+policy:
+  allow_implicit_invocation: true

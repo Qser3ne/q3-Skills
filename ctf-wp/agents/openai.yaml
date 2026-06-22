@@ -1,0 +1,7 @@
+interface:
+  display_name: "CTF WP"
+  short_description: "从选手视角生成可复现的中文 CTF 题解"
+  default_prompt: "使用 $ctf-wp 生成详细中文 CTF 题解，保留错误尝试、转向过程、出错点复盘、耗时点复盘、关键命令、关键请求与完整复现入口。"
+
+policy:
+  allow_implicit_invocation: false
