@@ -1,6 +1,6 @@
 ---
 name: assist-cliCreator
-description: Build a composable CLI for Codex from API docs, an OpenAPI spec, existing curl examples, an SDK, a web app, an admin tool, or a local script. Use $assist-cliCreator when the user wants Codex to create a command-line tool that can run from any repo, expose composable read/write commands, return stable JSON, manage auth, and pair with a companion skill.
+description: 可复用 CLI 构建。当用户要从 API 文档、OpenAPI、curl、SDK、网页或脚本创建命令行工具时使用。输入通常包括来源材料和目标命令；输出包括可安装 CLI、稳定 JSON 接口和 companion skill。不用于一次性脚本。
 ---
 
 # CLI Creator

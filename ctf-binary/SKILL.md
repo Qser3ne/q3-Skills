@@ -1,6 +1,6 @@
 ---
 name: ctf-binary
-description: 当正在实际解决一道 CTF 二进制题目时使用，适用于 Pwn 和 Reverse 方向；即使用户没有显式调用该 skill 也可触发。优先使用 ida-mcp、gdb、pwntools 等工具做本地分析、调试与验证；pwntools 虚拟环境从 `SKILL-CTF-BINARY-PWNTOOLS-VENV` 环境变量读取。
+description: CTF Pwn/Reverse 实战解题。当用户正在解决二进制题目时使用，可隐式触发。输入通常包括附件、二进制、源码、调试信息或远程服务；输出包括分析、脚本和 flag。不用于 Web、Misc 或泛泛讨论。
 ---
 
 # CTF Binary

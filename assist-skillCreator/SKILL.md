@@ -1,6 +1,6 @@
 ---
 name: assist-skillCreator
-description: 当创建或更新 Codex skill 时使用，包括为 `SKILL-ASSIST-SKILLCREATOR-DEFAULT-SKILLS-DIR` 指定的目录下的 skill 搭脚手架、补强或修订。本 skill 会增强 `skill-creator`：默认把新 skill 放到该环境变量指定的目录，如果用户说明是项目级 skill 则放到项目根目录，要求明确目标 skill 的触发方式（主动触发 = explicit invocation，被动触发 = implicit invocation），收集所需的 agents/UI 元数据，生成或修正 `agents/openai.yaml`，并且除非用户明确要求英文，否则默认用中文编写 skill 创建计划。只要用户的意图是在创建或更新 skill，即使没有显式提到本 skill 也应触发。
+description: Codex skill 创建与更新。当用户要新建、补强或修订 skill，或提到触发方式、路径、agents 元数据时使用。输入通常包括目标 skill 信息；输出包括 `SKILL.md` 与 `agents/openai.yaml`。不用于普通代码开发。
 ---
 
 # Skill Creator Auxiliary

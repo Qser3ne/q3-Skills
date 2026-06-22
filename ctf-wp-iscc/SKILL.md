@@ -1,6 +1,6 @@
 ---
 name: ctf-wp-iscc
-description: 仅在用户显式调用 `ctf-wp-iscc` 时使用。
+description: ISCC 风格 CTF Word 题解生成。当用户显式调用 `$ctf-wp-iscc` 时使用。输入通常包括当前目录材料、题目名和环境变量配置；输出包括合规 `.docx` 题解。不用于普通 Markdown WP。
 ---
 
 # CTF-WP-ISCC

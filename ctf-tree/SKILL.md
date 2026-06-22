@@ -1,6 +1,6 @@
 ---
 name: ctf-tree
-description: 在解决 CTF Web 或 Misc challenge 时维护 AI 可续接的任务-结论关系图与 appendix/worklog，按可复现任务和可复用结论记录证据、依赖和分支；仅用于真实解题调查，不用于 pwn、rev、crypto、forensics 或泛泛安全讨论。
+description: CTF Web/Misc 续接记录。当用户在真实解题中需要维护任务-结论关系图、appendix 或 worklog 时使用。输入通常包括实验观察和验证结果；输出包括可续接调查文档。不用于二进制、Crypto 或泛泛讨论。
 ---
 
 # CTF 任务-结论验证链文档

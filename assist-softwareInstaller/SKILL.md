@@ -1,6 +1,6 @@
 ---
 name: assist-softwareInstaller
-description: 仅在用户显式调用 $assist-softwareInstaller 以安装、部署或设置软件工具或应用时使用。若可用优先选择 apt；否则检查 GitHub README，在源码安装、发行包安装或 Docker 部署之间做选择。不允许隐式触发。
+description: 软件安装与部署。当用户显式调用 `$assist-softwareInstaller` 安装、部署或设置工具和应用时使用。输入通常包括软件名、仓库或安装目标；输出包括可运行安装结果。不用于用法咨询或已安装应用排错。
 ---
 
 # Software Installer

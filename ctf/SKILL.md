@@ -1,6 +1,6 @@
 ---
 name: ctf
-description: 当正在实际解决一道 CTF 题目时使用，仅适用于 Web 和 Misc 方向；即使用户没有显式调用该 skill 也可触发。不要用于泛泛提到 CTF、随意讨论 CTF。直接使用系统 Python，缺少所需库时直接下载安装，并优先用 Docker 做本地复现和错误检查。
+description: CTF Web/Misc 实战解题。当用户正在解决 Web 或 Misc 题目时使用，可隐式触发。输入通常包括题面、附件、服务地址或报错；输出包括验证过程、脚本和 flag。不用于 Pwn、Reverse 或泛泛讨论。
 ---
 
 # CTF

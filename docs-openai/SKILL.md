@@ -1,6 +1,6 @@
 ---
 name: "docs-openai"
-description: "Use when the user asks how to build with OpenAI products or APIs and needs up-to-date official documentation with citations, help choosing the latest model for a use case, or model upgrade and prompt-upgrade guidance; prioritize OpenAI docs MCP tools, use bundled references only as helper context, and restrict any fallback browsing to official OpenAI domains."
+description: OpenAI 官方文档查询。当用户询问 OpenAI API、模型选择、模型升级或提示词升级并需要最新官方依据时使用。输入通常包括问题、目标模型或迁移目标；输出包括带引用的答案。不用于非 OpenAI 文档。
 ---
 
 

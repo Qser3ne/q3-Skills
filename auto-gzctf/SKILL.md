@@ -1,6 +1,6 @@
 ---
 name: auto-gzctf
-description: 当需要操作 GZCTF / HackHub 题目平台时使用：列出题目、查看题目详情、开启/延长/关闭靶机实例，并按平台要求加密后提交 flag。适用于已持有站点 Cookie（如 `GZCTF_Token`）的真实比赛或靶场环境。默认显式触发。
+description: GZCTF/HackHub 平台操作。当用户要列题、查看题目、开启或关闭实例、延长靶机、提交 flag 时使用。输入通常包括站点 Cookie、比赛 ID 和题目 ID；输出包括平台动作结果。不用于漏洞分析。
 ---
 
 # GZCTF Target Ops

@@ -1,6 +1,6 @@
 ---
 name: ctf-tree-binary
-description: 在解决 CTF Pwn 或 Reverse challenge 时维护 AI 可续接的任务-结论关系图与 appendix/worklog，按可复现任务和可复用结论记录证据、依赖和分支；仅用于真实解题调查，不用于 web、misc、crypto、forensics 或泛泛安全讨论。
+description: CTF Pwn/Reverse 续接记录。当用户在二进制解题中需要维护任务-结论关系图、appendix 或 worklog 时使用。输入通常包括分析观察和调试证据；输出包括可续接调查文档。不用于 Web、Misc 或泛泛讨论。
 ---
 
 # CTF Tree Binary 任务-结论验证链文档

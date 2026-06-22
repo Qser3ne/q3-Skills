@@ -1,6 +1,6 @@
 ---
 name: ctf-wp
-description: 仅在用户显式调用 `ctf-wp` 时使用；从解题者视角生成详细的中文 CTF 题解，包含推理过程、失败尝试、转向过程、可复现的请求或命令，以及完整的复现入口。
+description: CTF 中文题解生成。当用户显式调用 `$ctf-wp` 要求生成 writeup、WP 或解题报告时使用。输入通常包括题目材料、过程记录和脚本；输出包括可复现中文题解与复现入口。不用于知识点摘要。
 metadata:
   user-invocable: "true"
   argument-hint: "[challenge-name]"

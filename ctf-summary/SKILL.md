@@ -1,6 +1,6 @@
 ---
 name: ctf-summary
-description: 仅在用户显式调用 `$ctf-summary` 时使用；基于 CTF WP、题解、复现记录或脚本提炼知识点，并按固定章节输出中文 Markdown 知识点文档。
+description: CTF 知识点提炼。当用户显式调用 `$ctf-summary` 基于 WP、题解、复现记录或脚本总结知识点时使用。输入通常包括解题材料；输出包括中文 Markdown 知识点文档。不用于重新写完整 WP。
 ---
 
 # CTF 知识点总结
